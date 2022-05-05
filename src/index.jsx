@@ -7,7 +7,7 @@ import AnimalDetail from "./components/AnimalDetail/detail";
 const App = () => {
 
   const [animalList, setAnimalList] = useState([]);
-  const [selectedAnimal, setSelectedAnimal] = useState([]);
+  const [selectedAnimal, setSelectedAnimal] = useState(null);
   
   const onSelected = (id) => {
     setSelectedAnimal(animalList.find(animal => animal.id === id));
@@ -25,7 +25,7 @@ const App = () => {
       <h1>Zvířátka v ZOO</h1>
       <div className="container">
         <AnimalList animalList={animalList} onSelected={onSelected}/>
-        <AnimalDetail animal={selectedAnimal}/>
+        {selectedAnimal && <AnimalDetail animal={selectedAnimal}/>}
       </div>
     </>
   );
